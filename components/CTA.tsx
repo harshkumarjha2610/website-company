@@ -17,10 +17,10 @@ export default function CTA() {
   }
 
   return (
-    <section id="contact" className="py-24 bg-gradient-to-b from-primary to-secondary relative overflow-hidden">
+    <section id="contact" className="py-24 bg-gradient-to-b from-secondary to-primary relative overflow-hidden border-t border-white/5">
       {/* Ambient background glow */}
-      <div className="absolute bottom-0 right-0 w-[450px] h-[450px] bg-indigo-500/5 blur-[150px] rounded-full -z-10" />
-      <div className="absolute top-10 left-0 w-96 h-96 bg-purple-500/5 blur-[120px] rounded-full -z-10" />
+      <div className="absolute bottom-0 right-0 w-[450px] h-[450px] bg-accent/5 blur-[150px] rounded-full -z-10" />
+      <div className="absolute top-10 left-0 w-96 h-96 bg-accent-violet/5 blur-[120px] rounded-full -z-10" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid lg:grid-cols-12 gap-16 items-start">
@@ -44,18 +44,18 @@ export default function CTA() {
 
             {/* Visual Contact Cards list */}
             <div className="space-y-4">
-              <div className="flex items-center gap-4 bg-slate-900/30 border border-white/5 rounded-2xl p-5 hover:border-accent/30 transition-smooth">
-                <div className="bg-accent/15 w-12 h-12 rounded-xl flex items-center justify-center text-accent flex-shrink-0">
+              <div className="flex items-center gap-4 bg-secondary/50 border border-white/10 rounded-2xl p-5 hover:border-accent/40 transition-smooth group cursor-pointer shadow-glass">
+                <div className="bg-accent/10 w-12 h-12 rounded-xl flex items-center justify-center text-accent flex-shrink-0 group-hover:scale-110 transition-smooth">
                   <Mail size={22} />
                 </div>
                 <div>
                   <p className="text-xs text-gray-400 font-semibold font-sans uppercase tracking-wider">Email Us</p>
-                  <p className="text-base text-white font-sans mt-0.5">hello@techflow.com</p>
+                  <p className="text-base text-white font-sans mt-0.5">hello@enterprise.com</p>
                 </div>
               </div>
 
-              <div className="flex items-center gap-4 bg-slate-900/30 border border-white/5 rounded-2xl p-5 hover:border-accent/30 transition-smooth">
-                <div className="bg-accent/15 w-12 h-12 rounded-xl flex items-center justify-center text-accent flex-shrink-0">
+              <div className="flex items-center gap-4 bg-secondary/50 border border-white/10 rounded-2xl p-5 hover:border-accent/40 transition-smooth group cursor-pointer shadow-glass">
+                <div className="bg-accent/10 w-12 h-12 rounded-xl flex items-center justify-center text-accent flex-shrink-0 group-hover:scale-110 transition-smooth">
                   <Phone size={22} />
                 </div>
                 <div>
@@ -64,8 +64,8 @@ export default function CTA() {
                 </div>
               </div>
 
-              <div className="flex items-center gap-4 bg-slate-900/30 border border-white/5 rounded-2xl p-5 hover:border-accent/30 transition-smooth">
-                <div className="bg-accent/15 w-12 h-12 rounded-xl flex items-center justify-center text-accent flex-shrink-0">
+              <div className="flex items-center gap-4 bg-secondary/50 border border-white/10 rounded-2xl p-5 hover:border-accent/40 transition-smooth group cursor-pointer shadow-glass">
+                <div className="bg-accent/10 w-12 h-12 rounded-xl flex items-center justify-center text-accent flex-shrink-0 group-hover:scale-110 transition-smooth">
                   <MapPin size={22} />
                 </div>
                 <div>
@@ -82,7 +82,7 @@ export default function CTA() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="lg:col-span-7 bg-slate-900/30 backdrop-blur-md border border-white/5 rounded-3xl p-8 md:p-10 shadow-glass"
+            className="lg:col-span-7 bg-secondary/50 backdrop-blur-md border border-white/10 rounded-3xl p-8 md:p-10 shadow-glass relative"
           >
             {submitted ? (
               <motion.div
@@ -113,7 +113,7 @@ export default function CTA() {
                       placeholder="John Doe"
                       value={formState.name}
                       onChange={(e) => setFormState({ ...formState, name: e.target.value })}
-                      className="w-full bg-white/[0.02] border border-white/10 rounded-xl px-4 py-3.5 text-white placeholder-gray-500 focus:outline-none focus:border-accent/40 focus:bg-white/[0.04] transition-smooth font-sans text-sm"
+                      className="w-full bg-primary/50 border border-white/10 rounded-xl px-4 py-3.5 text-white placeholder-gray-500 focus:outline-none focus:border-accent/50 focus:bg-primary transition-smooth font-sans text-sm"
                     />
                   </div>
                   <div>
@@ -125,7 +125,7 @@ export default function CTA() {
                       placeholder="john@example.com"
                       value={formState.email}
                       onChange={(e) => setFormState({ ...formState, email: e.target.value })}
-                      className="w-full bg-white/[0.02] border border-white/10 rounded-xl px-4 py-3.5 text-white placeholder-gray-500 focus:outline-none focus:border-accent/40 focus:bg-white/[0.04] transition-smooth font-sans text-sm"
+                      className="w-full bg-primary/50 border border-white/10 rounded-xl px-4 py-3.5 text-white placeholder-gray-500 focus:outline-none focus:border-accent/50 focus:bg-primary transition-smooth font-sans text-sm"
                     />
                   </div>
                 </div>
@@ -138,7 +138,7 @@ export default function CTA() {
                     placeholder="e.g. Custom SaaS development"
                     value={formState.subject}
                     onChange={(e) => setFormState({ ...formState, subject: e.target.value })}
-                    className="w-full bg-white/[0.02] border border-white/10 rounded-xl px-4 py-3.5 text-white placeholder-gray-500 focus:outline-none focus:border-accent/40 focus:bg-white/[0.04] transition-smooth font-sans text-sm"
+                    className="w-full bg-primary/50 border border-white/10 rounded-xl px-4 py-3.5 text-white placeholder-gray-500 focus:outline-none focus:border-accent/50 focus:bg-primary transition-smooth font-sans text-sm"
                   />
                 </div>
                 <div>
@@ -150,12 +150,12 @@ export default function CTA() {
                     placeholder="Describe your goals, requirements, or timelines..."
                     value={formState.message}
                     onChange={(e) => setFormState({ ...formState, message: e.target.value })}
-                    className="w-full bg-white/[0.02] border border-white/10 rounded-xl px-4 py-3.5 text-white placeholder-gray-500 focus:outline-none focus:border-accent/40 focus:bg-white/[0.04] transition-smooth font-sans text-sm resize-none"
+                    className="w-full bg-primary/50 border border-white/10 rounded-xl px-4 py-3.5 text-white placeholder-gray-500 focus:outline-none focus:border-accent/50 focus:bg-primary transition-smooth font-sans text-sm resize-none"
                   />
                 </div>
                 <button
                   type="submit"
-                  className="w-full bg-gradient-to-r from-accent to-purple-600 hover:from-accent-hover hover:to-purple-700 text-white font-bold transition-smooth text-sm flex items-center justify-center gap-2 group shadow-glow-indigo py-4 rounded-xl hover:scale-[1.01]"
+                  className="w-full bg-accent hover:bg-accent-hover text-primary font-bold transition-smooth text-sm flex items-center justify-center gap-2 group shadow-glow-cyan py-4 rounded-xl hover:-translate-y-1"
                 >
                   Send Inquiry
                   <ArrowRight size={18} className="group-hover:translate-x-0.5 transition-smooth" />

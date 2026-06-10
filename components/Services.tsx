@@ -6,39 +6,39 @@ import { Code2, Smartphone, Database, Cloud, Brain, Zap } from 'lucide-react'
 const services = [
   {
     icon: Code2,
-    title: 'Web Development',
-    description: 'Custom web applications built with modern technologies, optimized for speed and scale.',
-    badgeColor: 'text-indigo-400 bg-indigo-500/10 border-indigo-500/20'
+    title: 'Enterprise Web Apps',
+    description: 'Scalable, high-performance web applications engineered for complex business requirements.',
+    badgeColor: 'text-accent bg-accent/10 border-accent/20'
   },
   {
     icon: Smartphone,
-    title: 'Mobile Apps',
-    description: 'High-performance native and cross-platform mobile solutions for iOS and Android.',
-    badgeColor: 'text-purple-400 bg-purple-500/10 border-purple-500/20'
+    title: 'Mobile Solutions',
+    description: 'Native and cross-platform mobile ecosystems delivering seamless user experiences.',
+    badgeColor: 'text-accent-violet bg-accent-violet/10 border-accent-violet/20'
   },
   {
     icon: Database,
-    title: 'Backend Systems',
-    description: 'Robust database systems, architecture, and secure backend solutions for heavy data.',
-    badgeColor: 'text-pink-400 bg-pink-500/10 border-pink-500/20'
+    title: 'Data Architecture',
+    description: 'Robust database systems and secure backend infrastructure for heavy data processing.',
+    badgeColor: 'text-accent bg-accent/10 border-accent/20'
   },
   {
     icon: Cloud,
-    title: 'Cloud Solutions',
-    description: 'Cloud architecture design, cost optimization, and multi-cloud server orchestration.',
-    badgeColor: 'text-cyan-400 bg-cyan-500/10 border-cyan-500/20'
+    title: 'Cloud Orchestration',
+    description: 'Multi-cloud strategy, cost optimization, and resilient serverless architecture design.',
+    badgeColor: 'text-accent-violet bg-accent-violet/10 border-accent-violet/20'
   },
   {
     icon: Brain,
-    title: 'AI & ML',
-    description: 'Intelligent automation algorithms and tailored machine learning integration.',
-    badgeColor: 'text-violet-400 bg-violet-500/10 border-violet-500/20'
+    title: 'AI Integration',
+    description: 'Intelligent automation, predictive analytics, and bespoke machine learning models.',
+    badgeColor: 'text-accent bg-accent/10 border-accent/20'
   },
   {
     icon: Zap,
-    title: 'DevOps & CI/CD',
-    description: 'Automated software delivery pipelines and cloud infrastructure optimization.',
-    badgeColor: 'text-amber-400 bg-amber-500/10 border-amber-500/20'
+    title: 'DevOps Automation',
+    description: 'Streamlined CI/CD pipelines ensuring continuous delivery and high availability.',
+    badgeColor: 'text-accent-violet bg-accent-violet/10 border-accent-violet/20'
   },
 ]
 
@@ -56,10 +56,10 @@ export default function Services() {
           className="text-center mb-20"
         >
           <h2 className="text-4xl md:text-5xl font-display font-extrabold mb-4 tracking-tight">
-            Our <span className="gradient-text">Services</span>
+            Enterprise <span className="gradient-text">Capabilities</span>
           </h2>
           <p className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto font-sans">
-            Comprehensive technology solutions engineered to scale and streamline your business operations
+            Comprehensive technology solutions engineered to scale and streamline your business operations.
           </p>
         </motion.div>
 
@@ -75,7 +75,10 @@ export default function Services() {
                 transition={{ duration: 0.5, delay: index * 0.08 }}
                 className="card-hover group"
               >
-                <div className="bg-slate-900/30 backdrop-blur-md border border-white/5 rounded-2xl p-8 h-full hover:border-accent/40 hover:bg-slate-900/50 transition-smooth shadow-glass flex flex-col items-start">
+                <div className="bg-secondary/50 backdrop-blur-md border border-white/10 rounded-2xl p-8 h-full hover:border-accent/40 transition-smooth shadow-glass flex flex-col items-start relative overflow-hidden">
+                  {/* Subtle top gradient glow on hover */}
+                  <div className="absolute top-0 inset-x-0 h-px w-1/2 mx-auto bg-gradient-to-r from-transparent via-accent to-transparent opacity-0 group-hover:opacity-100 transition-smooth" />
+                  
                   <div className={`p-4 rounded-xl border ${service.badgeColor} mb-6 group-hover:scale-105 transition-smooth`}>
                     <Icon size={24} />
                   </div>

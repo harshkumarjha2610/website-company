@@ -18,29 +18,29 @@ export default function Footer() {
   }
 
   return (
-    <footer className="bg-secondary border-t border-white/5 relative z-10">
+    <footer className="bg-primary border-t border-white/10 relative z-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-12 mb-16">
           
           {/* Logo and Description */}
           <div className="lg:col-span-4 space-y-6">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-gradient-to-br from-accent to-purple-600 rounded-xl flex items-center justify-center shadow-glow-indigo">
-                <span className="text-white font-display font-extrabold text-lg">TF</span>
+              <div className="w-10 h-10 bg-gradient-to-br from-accent to-accent-violet rounded-xl flex items-center justify-center shadow-glow-cyan">
+                <span className="text-primary font-display font-extrabold text-lg">EP</span>
               </div>
-              <span className="text-2xl font-display font-extrabold gradient-text tracking-wide">TechFlow</span>
+              <span className="text-2xl font-display font-extrabold text-white tracking-wide">Enterprise</span>
             </div>
             <p className="text-gray-400 font-sans text-sm leading-relaxed max-w-sm">
               Transforming modern businesses with cutting-edge software engineering, custom cloud setups, and intelligent digital products.
             </p>
             <div className="flex gap-3">
-              <a href="#" className="p-2.5 rounded-xl border border-white/5 bg-white/[0.02] text-gray-400 hover:text-white hover:bg-accent/10 hover:border-accent/30 transition-smooth">
+              <a href="#" className="p-2.5 rounded-xl border border-white/10 bg-secondary/50 text-gray-400 hover:text-white hover:bg-accent/10 hover:border-accent/40 transition-smooth">
                 <Github size={20} />
               </a>
-              <a href="#" className="p-2.5 rounded-xl border border-white/5 bg-white/[0.02] text-gray-400 hover:text-white hover:bg-accent/10 hover:border-accent/30 transition-smooth">
+              <a href="#" className="p-2.5 rounded-xl border border-white/10 bg-secondary/50 text-gray-400 hover:text-white hover:bg-accent/10 hover:border-accent/40 transition-smooth">
                 <Linkedin size={20} />
               </a>
-              <a href="#" className="p-2.5 rounded-xl border border-white/5 bg-white/[0.02] text-gray-400 hover:text-white hover:bg-accent/10 hover:border-accent/30 transition-smooth">
+              <a href="#" className="p-2.5 rounded-xl border border-white/10 bg-secondary/50 text-gray-400 hover:text-white hover:bg-accent/10 hover:border-accent/40 transition-smooth">
                 <Twitter size={20} />
               </a>
             </div>
@@ -75,7 +75,7 @@ export default function Footer() {
               Subscribe to receive updates on tech trends and frameworks.
             </p>
             {subscribed ? (
-              <p className="text-accent-light font-semibold font-sans text-sm pt-2">Thanks for subscribing!</p>
+              <p className="text-accent font-semibold font-sans text-sm pt-2">Thanks for subscribing!</p>
             ) : (
               <form onSubmit={handleSubscribe} className="flex gap-2 max-w-sm pt-1">
                 <input
@@ -84,11 +84,11 @@ export default function Footer() {
                   placeholder="Enter email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full bg-white/[0.02] border border-white/10 rounded-xl px-4 py-2 text-white placeholder-gray-500 focus:outline-none focus:border-accent/40 focus:bg-white/[0.04] transition-smooth font-sans text-sm"
+                  className="w-full bg-secondary/50 border border-white/10 rounded-xl px-4 py-2 text-white placeholder-gray-500 focus:outline-none focus:border-accent/40 focus:bg-secondary transition-smooth font-sans text-sm"
                 />
                 <button
                   type="submit"
-                  className="p-3 bg-accent hover:bg-accent-hover text-white rounded-xl shadow-glow-indigo transition-smooth"
+                  className="p-3 bg-accent hover:bg-accent-hover text-primary rounded-xl shadow-glow-cyan transition-smooth hover:-translate-y-0.5"
                 >
                   <ArrowRight size={18} />
                 </button>
@@ -99,8 +99,8 @@ export default function Footer() {
         </div>
 
         {/* Bottom copyright and legal */}
-        <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center text-sm font-sans text-gray-400 gap-4">
-          <p>&copy; {currentYear} TechFlow. All rights reserved.</p>
+        <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-sm font-sans text-gray-400 gap-4">
+          <p>&copy; {currentYear} Enterprise SaaS. All rights reserved.</p>
           <div className="flex gap-6">
             <Link href="#" className="hover:text-white transition-smooth">Privacy Policy</Link>
             <Link href="#" className="hover:text-white transition-smooth">Terms of Service</Link>

@@ -12,17 +12,16 @@ module.exports = {
         display: ['var(--font-inter)', 'sans-serif'],
       },
       colors: {
-        primary: '#000000', // Pure Black background
-        secondary: '#0a0a0c', // Faint dark gray for cards
+        primary: '#070A0F',
+        secondary: '#0B1220',
         accent: {
-          DEFAULT: '#a855f7', // Vibrant Purple
-          hover: '#9333ea',
-          light: '#c084fc',
+          DEFAULT: '#22D3EE',
+          violet: '#A78BFA',
+          hover: '#0891b2',
+          light: '#67e8f9',
         },
-        techBlue: '#3b82f6', // Vibrant Blue
-        techOrange: '#f97316', // Vibrant Orange
-        muted: '#a1a1aa',
-        cardBorder: 'rgba(255, 255, 255, 0.05)',
+        muted: '#9ca3af',
+        cardBorder: 'rgba(255, 255, 255, 0.1)',
       },
       animation: {
         'gradient': 'gradient 8s ease infinite',
@@ -51,8 +50,8 @@ module.exports = {
       },
       boxShadow: {
         'glass': '0 8px 32px 0 rgba(0, 0, 0, 0.37)',
-        'glow-indigo': '0 0 20px rgba(99, 102, 241, 0.25)',
-        'glow-purple': '0 0 20px rgba(168, 85, 247, 0.25)',
+        'glow-cyan': '0 0 20px rgba(34, 211, 238, 0.25)',
+        'glow-violet': '0 0 20px rgba(167, 139, 250, 0.25)',
       }
     },
   },

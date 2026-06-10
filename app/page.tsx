@@ -3,7 +3,7 @@
 import Hero from '@/components/Hero'
 import Clients from '@/components/Clients'
 import Services from '@/components/Services'
-import Projects from '@/components/Projects'
+import Features from '@/components/Features'
 import SaaS from '@/components/SaaS'
 import CTA from '@/components/CTA'
 import Testimonials from '@/components/Testimonials'
@@ -14,7 +14,7 @@ export default function Home() {
       <Hero />
       <Clients />
       <Services />
-      <Projects />
+      <Features />
       <SaaS />
       <Testimonials />
       <CTA />
