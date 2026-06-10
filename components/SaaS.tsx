@@ -14,8 +14,8 @@ const products = [
       'Up to 10 team members',
       'Version history (30 days)',
       'Basic API access',
-      '24/7 Email support'
-    ]
+      '24/7 Email support',
+    ],
   },
   {
     name: 'AnalyticsPro',
@@ -26,9 +26,9 @@ const products = [
       'Unlimited team members',
       'Predictive machine learning models',
       'Full REST API integration',
-      'Priority slack & video support'
+      'Priority slack & video support',
     ],
-    featured: true
+    featured: true,
   },
   {
     name: 'SecureVault',
@@ -39,19 +39,23 @@ const products = [
       'Comprehensive audit logs & security checks',
       'HIPAA & GDPR compliance reports',
       'SSO & SAML integration',
-      'Dedicated accounts manager support'
-    ]
+      'Dedicated accounts manager support',
+    ],
   },
 ]
 
 export default function SaaS() {
   return (
-    <section id="saas" className="py-24 bg-gradient-to-b from-secondary to-primary relative overflow-hidden">
-      {/* 3D Sphere Animation Background */}
+    <section
+      id="saas"
+      className="py-24 relative overflow-hidden"
+      style={{ backgroundColor: 'var(--bg-secondary)' }}
+    >
+      {/* 3D sphere background */}
       <div className="absolute top-10 right-0 w-[500px] h-[500px] -z-10 opacity-40 pointer-events-none">
         <SphereAnimation />
       </div>
-      <div className="absolute bottom-10 left-0 w-96 h-96 bg-accent/5 blur-[120px] rounded-full -z-10 pointer-events-none" />
+      <div className="absolute bottom-10 left-0 w-96 h-96 bg-[#22d3ee] blur-[120px] rounded-full -z-10 pointer-events-none" style={{ opacity: 'var(--glow-opacity)' }} />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
@@ -61,15 +65,15 @@ export default function SaaS() {
           transition={{ duration: 0.8 }}
           className="text-center mb-20"
         >
-          <h2 className="text-4xl md:text-5xl font-display font-extrabold mb-4 tracking-tight">
+          <h2 className="text-4xl md:text-5xl font-display font-extrabold mb-4 tracking-tight" style={{ color: 'var(--text-heading)' }}>
             Our <span className="gradient-text">SaaS Products</span>
           </h2>
-          <p className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto font-sans">
+          <p className="text-lg md:text-xl max-w-2xl mx-auto font-sans" style={{ color: 'var(--text-secondary)' }}>
             Scalable, secure, and smart cloud applications built to empower modern workflows
           </p>
         </motion.div>
 
-        {/* Pricing Cards Grid */}
+        {/* Pricing Cards */}
         <div className="grid md:grid-cols-3 gap-8 items-stretch mb-20">
           {products.map((product, index) => (
             <motion.div
@@ -80,53 +84,77 @@ export default function SaaS() {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className={`card-hover flex ${product.featured ? 'md:scale-[1.03] z-10' : ''}`}
             >
-              <div className={`border rounded-3xl p-8 flex flex-col justify-between w-full transition-smooth relative overflow-hidden ${
-                product.featured
-                  ? 'border-accent bg-slate-900/60 backdrop-blur-xl glow shadow-glass'
-                  : 'border-white/5 bg-slate-900/30 backdrop-blur-md hover:border-accent/40'
-              }`}>
+              <div
+                className="rounded-3xl p-8 flex flex-col justify-between w-full transition-smooth relative overflow-hidden"
+                style={{
+                  backgroundColor: 'var(--bg-card)',
+                  border: product.featured ? '2px solid #22d3ee' : '1px solid var(--border)',
+                  boxShadow: product.featured ? 'var(--shadow-glow), var(--shadow-card)' : 'var(--shadow-card)',
+                }}
+              >
                 {product.featured && (
                   <>
-                    {/* Featured glow bar */}
-                    <div className="absolute top-0 inset-x-0 h-1.5 bg-gradient-to-r from-accent to-purple-500" />
-                    <div className="bg-gradient-to-r from-accent to-purple-600 text-white px-4 py-1 rounded-full text-xs font-bold mb-6 w-fit shadow-glow-indigo">
+                    {/* Top accent bar */}
+                    <div className="absolute top-0 inset-x-0 h-1.5 bg-gradient-to-r from-[#22d3ee] to-purple-500" />
+                    <div className="bg-gradient-to-r from-[#22d3ee] to-purple-600 text-white px-4 py-1 rounded-full text-xs font-bold mb-6 w-fit">
                       Most Popular
                     </div>
                   </>
                 )}
-                
+
                 <div>
-                  <h3 className="text-2xl font-display font-bold text-white mb-2 tracking-tight">{product.name}</h3>
-                  <p className="text-[14px] text-gray-400 leading-relaxed font-sans mb-8">{product.description}</p>
-                  
+                  <h3 className="text-2xl font-display font-bold mb-2 tracking-tight" style={{ color: 'var(--text-heading)' }}>
+                    {product.name}
+                  </h3>
+                  <p className="text-[14px] leading-relaxed font-sans mb-8" style={{ color: 'var(--text-secondary)' }}>
+                    {product.description}
+                  </p>
+
                   <div className="mb-8 flex items-baseline gap-1">
-                    <span className="text-5xl font-display font-extrabold text-white tracking-tight">{product.price}</span>
-                    <span className="text-gray-400 text-sm font-medium">/month</span>
+                    <span className="text-5xl font-display font-extrabold tracking-tight" style={{ color: 'var(--text-heading)' }}>
+                      {product.price}
+                    </span>
+                    <span className="text-sm font-medium" style={{ color: 'var(--text-muted)' }}>/month</span>
                   </div>
 
-                  {/* Feature Checklist */}
-                  <div className="space-y-4 border-t border-white/5 pt-8 mb-8">
+                  {/* Features */}
+                  <div className="space-y-4 pt-8 mb-8" style={{ borderTop: '1px solid var(--border)' }}>
                     {product.features.map((feature, i) => (
                       <div key={i} className="flex items-start gap-3">
-                        <div className="p-0.5 rounded-full bg-accent/10 border border-accent/20 text-accent flex-shrink-0 mt-0.5">
+                        <div className="p-0.5 rounded-full border text-[#22d3ee] flex-shrink-0 mt-0.5" style={{ backgroundColor: 'rgba(34,211,238,0.08)', borderColor: 'rgba(34,211,238,0.25)' }}>
                           <Check size={14} />
                         </div>
-                        <span className="text-sm text-gray-300 font-sans leading-relaxed">{feature}</span>
+                        <span className="text-sm font-sans leading-relaxed" style={{ color: 'var(--text-secondary)' }}>{feature}</span>
                       </div>
                     ))}
                   </div>
                 </div>
 
-                <div>
-                  <button className={`w-full py-3.5 rounded-xl font-bold transition-smooth text-sm flex items-center justify-center gap-2 group ${
-                    product.featured
-                      ? 'bg-gradient-to-r from-accent to-purple-600 hover:from-accent-hover hover:to-purple-700 text-white shadow-glow-indigo hover:scale-[1.02]'
-                      : 'border border-accent text-accent bg-accent/5 hover:bg-accent/10 hover:scale-[1.02]'
-                  }`}>
-                    Get Started
-                    <ArrowRight size={16} className="group-hover:translate-x-0.5 transition-smooth" />
-                  </button>
-                </div>
+                <button
+                  className={`w-full py-3.5 rounded-xl font-bold transition-smooth text-sm flex items-center justify-center gap-2 group ${
+                    product.featured ? 'bg-gradient-to-r from-[#22d3ee] to-purple-600 hover:from-[#0891b2] hover:to-purple-700 text-white hover:scale-[1.02]' : ''
+                  }`}
+                  style={!product.featured ? {
+                    border: '1px solid #22d3ee',
+                    color: '#22d3ee',
+                    backgroundColor: 'rgba(34,211,238,0.06)',
+                  } : { boxShadow: '0 0 20px rgba(34,211,238,0.2)' }}
+                  onMouseEnter={e => {
+                    if (!product.featured) {
+                      (e.currentTarget as HTMLElement).style.backgroundColor = 'rgba(34,211,238,0.12)'
+                      ;(e.currentTarget as HTMLElement).style.transform = 'scale(1.02)'
+                    }
+                  }}
+                  onMouseLeave={e => {
+                    if (!product.featured) {
+                      (e.currentTarget as HTMLElement).style.backgroundColor = 'rgba(34,211,238,0.06)'
+                      ;(e.currentTarget as HTMLElement).style.transform = ''
+                    }
+                  }}
+                >
+                  Get Started
+                  <ArrowRight size={16} className="group-hover:translate-x-0.5 transition-smooth" />
+                </button>
               </div>
             </motion.div>
           ))}
@@ -138,16 +166,26 @@ export default function SaaS() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="bg-slate-900/30 backdrop-blur-md border border-white/5 rounded-3xl p-8 md:p-12 text-center md:text-left flex flex-col md:flex-row items-center justify-between gap-8 shadow-glass relative overflow-hidden"
+          className="rounded-3xl p-8 md:p-12 text-center md:text-left flex flex-col md:flex-row items-center justify-between gap-8 relative overflow-hidden"
+          style={{
+            backgroundColor: 'var(--bg-card)',
+            border: '1px solid var(--border)',
+            boxShadow: 'var(--shadow-glass)',
+          }}
         >
-          <div className="absolute inset-y-0 right-0 w-1/3 bg-gradient-to-l from-accent/5 to-transparent blur-3xl rounded-full -z-10" />
+          <div className="absolute inset-y-0 right-0 w-1/3 bg-gradient-to-l from-[#22d3ee]/5 to-transparent -z-10" />
           <div>
-            <h3 className="text-2xl md:text-3xl font-display font-bold text-white mb-3 tracking-tight">Looking for custom Enterprise solutions?</h3>
-            <p className="text-gray-400 font-sans text-[15px] leading-relaxed max-w-2xl">
+            <h3 className="text-2xl md:text-3xl font-display font-bold mb-3 tracking-tight" style={{ color: 'var(--text-heading)' }}>
+              Looking for custom Enterprise solutions?
+            </h3>
+            <p className="font-sans text-[15px] leading-relaxed max-w-2xl" style={{ color: 'var(--text-secondary)' }}>
               We engineer tailor-made SaaS frameworks and custom private clouds, including dedicated customer success agents and high SLA support packages.
             </p>
           </div>
-          <button className="bg-gradient-to-r from-accent to-purple-600 hover:from-accent-hover hover:to-purple-700 text-white px-8 py-4 rounded-xl font-bold transition-smooth shadow-glow-indigo flex-shrink-0 hover:scale-[1.02]">
+          <button
+            className="bg-gradient-to-r from-[#22d3ee] to-purple-600 hover:from-[#0891b2] hover:to-purple-700 text-white px-8 py-4 rounded-xl font-bold transition-smooth flex-shrink-0 hover:scale-[1.02]"
+            style={{ boxShadow: '0 0 20px rgba(34,211,238,0.2)' }}
+          >
             Contact Sales
           </button>
         </motion.div>
@@ -155,4 +193,3 @@ export default function SaaS() {
     </section>
   )
 }
-
