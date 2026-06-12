@@ -2,6 +2,9 @@
 
 import { motion } from 'framer-motion'
 import { CheckCircle2 } from 'lucide-react'
+import AnalyticsAnimation from '@/components/3d/AnalyticsAnimation'
+import SecurityAnimation from '@/components/3d/SecurityAnimation'
+import IntegrationsAnimation from '@/components/3d/IntegrationsAnimation'
 
 const features = [
   {
@@ -70,13 +73,15 @@ export default function Features() {
                   >
                     <div className={`absolute inset-0 ${feature.image} opacity-50 group-hover:opacity-90 transition-smooth`} />
                     <div
-                      className="w-full h-full rounded-xl flex items-center justify-center relative z-10 overflow-hidden group-hover:scale-[1.02] transition-smooth"
+                      className="w-full h-full rounded-xl flex items-center justify-center relative z-10 overflow-hidden group-hover:scale-[1.02] transition-smooth animate-fade-in"
                       style={{
                         border: '1px solid var(--border)',
                         backgroundColor: 'var(--bg-secondary)',
                       }}
                     >
-                      <div className="w-32 h-32 bg-[#22d3ee]/20 blur-3xl rounded-full absolute" />
+                      {idx === 0 && <AnalyticsAnimation />}
+                      {idx === 1 && <SecurityAnimation />}
+                      {idx === 2 && <IntegrationsAnimation />}
                     </div>
                   </div>
                 </motion.div>

@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { useState } from 'react'
+import TechnologySphere from '@/components/3d/TechnologySphere'
 
 const ecosystem = [
   { category: 'Frontend',       color: 'from-cyan-400 to-blue-500',     accentColor: '#22d3ee', tech: ['React', 'Next.js', 'TypeScript', 'Angular'] },
@@ -48,22 +49,9 @@ export default function TechnologyEcosystem() {
 
         <div className="relative">
           {/* Core node */}
-          <div
-            className="hidden lg:flex absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 rounded-full z-20 items-center justify-center"
-            style={{
-              backgroundColor: 'var(--bg-card)',
-              border: '2px solid var(--border-strong)',
-              boxShadow: 'var(--shadow-glow)',
-            }}
-          >
-            <div className="text-center">
-              <span className="block font-display font-bold text-lg" style={{ color: 'var(--text-heading)' }}>Core</span>
-              <span className="block w-2 h-2 rounded-full bg-[#22d3ee] mx-auto mt-2 animate-ping" />
-            </div>
-            <svg className="absolute w-[800px] h-[800px] pointer-events-none -z-10" style={{ opacity: 0.08 }} viewBox="0 0 800 800">
-              <circle cx="400" cy="400" r="250" fill="none" stroke="currentColor" strokeWidth="1" strokeDasharray="4 8" className="animate-[spin_60s_linear_infinite]" />
-              <circle cx="400" cy="400" r="350" fill="none" stroke="currentColor" strokeWidth="1" strokeDasharray="2 10" className="animate-[spin_90s_linear_infinite_reverse]" />
-            </svg>
+          {/* Core 3D technology sphere node */}
+          <div className="hidden lg:flex absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 items-center justify-center">
+            <TechnologySphere />
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-y-24 relative z-30">

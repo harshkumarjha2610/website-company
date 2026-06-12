@@ -1,9 +1,19 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
+  reactStrictMode: false,
   experimental: {
-    optimizePackageImports: ["@react-three/fiber", "@react-three/drei"]
-  }
+    optimizePackageImports: ['framer-motion', 'lucide-react'],
+  },
+  // Reduce file-watching overhead on Windows/OneDrive
+  webpack: (config, { isServer }) => {
+    if (!isServer) {
+      config.watchOptions = {
+        poll: 1000,
+        aggregateTimeout: 300,
+      }
+    }
+    return config
+  },
 }
 
 module.exports = nextConfig

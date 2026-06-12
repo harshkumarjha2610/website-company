@@ -6,6 +6,10 @@ import Footer from '@/components/Footer'
 import SmoothScroll from '@/components/SmoothScroll'
 import ParticleBackground from '@/components/3d/ParticleBackground'
 import { ThemeProvider } from '@/components/ThemeProvider'
+import AuthModal from '@/components/AuthModal'
+import CookieConsent from '@/components/CookieConsent'
+import LiveChatWidget from '@/components/LiveChatWidget'
+import AIAssistantDrawer from '@/components/AIAssistantDrawer'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -57,8 +61,12 @@ export default function RootLayout({
           <SmoothScroll>
             <ParticleBackground />
             <Navbar />
+            <AuthModal />
             {children}
             <Footer />
+            <CookieConsent />
+            <LiveChatWidget />
+            <AIAssistantDrawer />
           </SmoothScroll>
         </ThemeProvider>
       </body>
