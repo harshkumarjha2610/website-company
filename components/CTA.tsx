@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Mail, Phone, MapPin, ArrowRight, Shield, Upload, Calendar, X, Check, FileText } from 'lucide-react'
+import { Mail, Phone, MapPin, ArrowRight, Shield, Calendar, X, Check } from 'lucide-react'
 
 const inputStyle = {
   backgroundColor: 'var(--bg-input)',
@@ -36,18 +36,12 @@ export default function CTA() {
   const [formState, setFormState] = useState({
     name: '',
     email: '',
-    industry: '',
-    budget: '$50k - $100k',
-    timeline: '3 - 6 months',
     message: '',
   })
   
   const [submitted, setSubmitted] = useState(false)
   const [focusedField, setFocusedField] = useState<string | null>(null)
   
-  // File upload drag-and-drop state
-  const [dragActive, setDragActive] = useState(false)
-  const [uploadedFile, setUploadedFile] = useState<File | null>(null)
   
   // Calendly Modal State
   const [isCalOpen, setIsCalOpen] = useState(false)
@@ -74,30 +68,7 @@ export default function CTA() {
     setTimeout(() => setSubmitted(true), 600)
   }
 
-  const handleDrag = (e: React.DragEvent) => {
-    e.preventDefault()
-    e.stopPropagation()
-    if (e.type === "dragenter" || e.type === "dragover") {
-      setDragActive(true)
-    } else if (e.type === "dragleave") {
-      setDragActive(false)
-    }
-  }
 
-  const handleDrop = (e: React.DragEvent) => {
-    e.preventDefault()
-    e.stopPropagation()
-    setDragActive(false)
-    if (e.dataTransfer.files && e.dataTransfer.files[0]) {
-      setUploadedFile(e.dataTransfer.files[0])
-    }
-  }
-
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files[0]) {
-      setUploadedFile(e.target.files[0])
-    }
-  }
 
   const getInputStyle = (field: string) => ({
     ...inputStyle,
@@ -251,127 +222,14 @@ export default function CTA() {
                   </div>
                 </div>
 
-                {/* Industry Dropdown */}
+                {/* Message */}
                 <div>
-                  <label htmlFor="industry" style={labelStyle}>Your Industry</label>
-                  <select
-                    id="industry"
-                    required
-                    value={formState.industry}
-                    onChange={e => setFormState({ ...formState, industry: e.target.value })}
-                    onFocus={() => setFocusedField('industry')}
-                    onBlur={() => setFocusedField(null)}
-                    style={getInputStyle('industry') as any}
-                    className="cursor-pointer bg-[#0b1220] text-gray-700 dark:text-gray-300"
-                  >
-                    <option value="">Select Industry</option>
-                    <option value="tech">Technology / SaaS</option>
-                    <option value="finance">Finance / Fintech</option>
-                    <option value="healthcare">Healthcare / Biotech</option>
-                    <option value="ecommerce">E-Commerce & Logistics</option>
-                    <option value="other">Other Fields</option>
-                  </select>
-                </div>
-
-                {/* Budget Range Selection */}
-                <div>
-                  <label style={labelStyle}>Project Budget (USD)</label>
-                  <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-                    {['< $25k', '$25k - $50k', '$50k - $100k', '$100k+'].map(val => (
-                      <button
-                        key={val}
-                        type="button"
-                        onClick={() => setFormState({ ...formState, budget: val })}
-                        className={`py-3 px-1.5 rounded-xl border text-center font-bold text-xs transition-all ${
-                          formState.budget === val
-                            ? 'border-[#ff5f1f] bg-[#ff5f1f]/10 text-[#ff5f1f]'
-                            : 'border-gray-200 dark:border-white/10 hover:border-gray-400 dark:hover:border-white/20 text-gray-700 dark:text-gray-300'
-                        }`}
-                      >
-                        {val}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Timeline Selection */}
-                <div>
-                  <label style={labelStyle}>Target Delivery Timeline</label>
-                  <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-                    {['< 1 month', '1 - 3 months', '3 - 6 months', '6+ months'].map(val => (
-                      <button
-                        key={val}
-                        type="button"
-                        onClick={() => setFormState({ ...formState, timeline: val })}
-                        className={`py-3 px-1.5 rounded-xl border text-center font-bold text-xs transition-all ${
-                          formState.timeline === val
-                            ? 'border-[#ff5f1f] bg-[#ff5f1f]/10 text-[#ff5f1f]'
-                            : 'border-gray-200 dark:border-white/10 hover:border-gray-400 dark:hover:border-white/20 text-gray-700 dark:text-gray-300'
-                        }`}
-                      >
-                        {val}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Drag and Drop File Upload Area */}
-                <div>
-                  <label style={labelStyle}>Upload Project Brief / specs (Optional)</label>
-                  <div
-                    onDragEnter={handleDrag}
-                    onDragOver={handleDrag}
-                    onDragLeave={handleDrag}
-                    onDrop={handleDrop}
-                    className={`relative border-2 border-dashed rounded-2xl p-6 transition-all flex flex-col items-center justify-center text-center cursor-pointer ${
-                      dragActive
-                        ? 'border-[#ff5f1f] bg-[#ff5f1f]/5'
-                        : 'border-gray-300 dark:border-white/15 bg-white/5 hover:border-gray-400 dark:hover:border-white/25'
-                    }`}
-                  >
-                    <input
-                      type="file"
-                      id="file-upload"
-                      multiple={false}
-                      onChange={handleFileChange}
-                      className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
-                    />
-                    
-                    {uploadedFile ? (
-                      <div className="flex flex-col items-center gap-2">
-                        <FileText size={32} className="text-[#ff5f1f]" />
-                        <p className="text-xs font-bold text-gray-800 dark:text-white">{uploadedFile.name}</p>
-                        <p className="text-[10px] text-gray-400">{(uploadedFile.size / 1024).toFixed(1)} KB</p>
-                        <button
-                          type="button"
-                          onClick={(e) => {
-                            e.preventDefault()
-                            e.stopPropagation()
-                            setUploadedFile(null)
-                          }}
-                          className="text-xs text-[#ff5f1f] hover:underline font-bold mt-1"
-                        >
-                          Remove file
-                        </button>
-                      </div>
-                    ) : (
-                      <>
-                        <Upload className="text-gray-400 mb-2" size={24} />
-                        <p className="text-xs font-bold text-gray-700 dark:text-gray-300">Drag & Drop specifications here or click to browse</p>
-                        <p className="text-[10px] text-gray-400 mt-1">PDF, DOCX, TXT or PNG up to 10MB</p>
-                      </>
-                    )}
-                  </div>
-                </div>
-
-                {/* Message Details */}
-                <div>
-                  <label htmlFor="message" style={labelStyle}>Message Details</label>
+                  <label htmlFor="message" style={labelStyle}>Your Message</label>
                   <textarea
                     required
                     id="message"
-                    rows={4}
-                    placeholder="Describe your goals, tech stack preferences, or specific business problems..."
+                    rows={5}
+                    placeholder="Tell us about your project or how we can help..."
                     value={formState.message}
                     onChange={e => setFormState({ ...formState, message: e.target.value })}
                     onFocus={() => setFocusedField('message')}
@@ -385,7 +243,7 @@ export default function CTA() {
                   type="submit"
                   className="w-full bg-[#ff5f1f] hover:bg-[#ff7f50] font-bold transition-smooth text-sm flex items-center justify-center gap-2 group py-4 rounded-xl hover:-translate-y-1 text-white shadow-glow"
                 >
-                  Send Project Inquiry
+                  Send Message
                   <ArrowRight size={18} className="group-hover:translate-x-0.5 transition-smooth" />
                 </button>
               </form>

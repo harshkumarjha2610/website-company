@@ -15,8 +15,8 @@ const countries = [
 ]
 
 export default function AuthModal() {
-  const [isOpen, setIsOpen] = useState(false)
-  const [mode, setMode] = useState<'login' | 'signup' | 'forgot' | 'magic' | 'otp'>('login')
+  const [isOpen, setIsOpen] = useState(true)
+  const [mode, setMode] = useState<'login' | 'signup' | 'forgot' | 'magic' | 'otp'>('signup')
   const emailInputRef = useRef<HTMLInputElement>(null)
 
   // Sign Up form fields
@@ -47,14 +47,6 @@ export default function AuthModal() {
       }
     }
     window.addEventListener('toggle-auth-modal', handleToggle)
-    
-    // First visit trigger
-    const hasVisited = localStorage.getItem('tf_has_visited')
-    if (!hasVisited) {
-      setIsOpen(true)
-      localStorage.setItem('tf_has_visited', 'true')
-    }
-
     return () => window.removeEventListener('toggle-auth-modal', handleToggle)
   }, [isOpen])
 

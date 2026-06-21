@@ -3,6 +3,7 @@
 import Hero from '@/components/Hero'
 import Clients from '@/components/Clients'
 import Stats from '@/components/Stats'
+import AIDilemma from '@/components/AIDilemma'
 import Services from '@/components/Services'
 import AIInnovationHub from '@/components/AIInnovationHub'
 import TechnologyEcosystem from '@/components/TechnologyEcosystem'
@@ -19,6 +20,7 @@ export default function Home() {
       <Hero />
       <Clients />
       <Stats />
+      <AIDilemma />
       <AIInnovationHub />
       <TechnologyEcosystem />
       <Services />

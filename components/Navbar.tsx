@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
-import { Menu, X, Search, Globe, ChevronDown, Sparkles, Cpu, Database, TrendingUp, Users, ArrowRight, BookOpen, Briefcase, HelpCircle } from 'lucide-react'
+import { Menu, X, Search, Globe, ChevronDown, Sparkles, Cpu, TrendingUp, Users, ArrowRight, BookOpen, Briefcase, HelpCircle, MessageSquare, Bot, Lightbulb, Network, Plug } from 'lucide-react'
 import ThemeToggle from '@/components/ThemeToggle'
 import { motion, AnimatePresence } from 'framer-motion'
 
@@ -113,7 +113,7 @@ export default function Navbar() {
             {/* Desktop Navigation Links */}
             <div className="hidden md:flex items-center gap-6 font-sans font-medium text-[14px]">
               
-              {/* AI Platforms Dropdown Trigger */}
+              {/* Services Dropdown Trigger */}
               <div 
                 className="relative"
                 onMouseEnter={() => setActiveMenu('platforms')}
@@ -124,51 +124,125 @@ export default function Navbar() {
                     activeMenu === 'platforms' ? 'text-[#ff5f1f]' : 'text-gray-600 dark:text-gray-300'
                   }`}
                 >
-                  <span>AI Platforms</span>
+                  <span>Services</span>
                   <ChevronDown size={14} className={`transform transition-transform duration-200 ${activeMenu === 'platforms' ? 'rotate-180' : ''}`} />
                 </button>
 
-                {/* Platforms Mega Menu */}
+                {/* Services Mega Menu */}
                 <AnimatePresence>
                   {activeMenu === 'platforms' && (
                     <motion.div
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: 10 }}
-                      className="absolute left-0 mt-2 w-[580px] rounded-2xl border border-gray-200/80 dark:border-white/10 bg-white/95 dark:bg-[#070A0F]/95 backdrop-blur-xl shadow-2xl p-6 grid grid-cols-2 gap-6 z-50 text-left"
+                      className="absolute left-[-150px] mt-2 w-[850px] rounded-2xl border border-gray-200/80 dark:border-white/10 bg-white/95 dark:bg-[#070A0F]/95 backdrop-blur-xl shadow-2xl p-6 grid grid-cols-12 gap-6 z-50 text-left"
                     >
-                      <div>
-                        <h4 className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-4 flex items-center gap-1">
+                      {/* Left Column (col-span-3) */}
+                      <div className="col-span-3 flex flex-col justify-between border-r border-gray-200 dark:border-white/10 pr-6">
+                        <div className="space-y-4">
+                          <Link href="#services" className="flex items-center justify-between p-2 rounded-xl bg-blue-500/5 hover:bg-[#ff5f1f]/10 text-blue-600 dark:text-blue-400 hover:text-[#ff5f1f] transition-all group font-bold text-xs">
+                            <span>Explore AI Tech Solutions</span>
+                            <ArrowRight size={14} className="group-hover:translate-x-0.5 transition-transform" />
+                          </Link>
+                          
+                          <Link href="#services" className="flex items-center gap-2 p-2 rounded-xl text-gray-800 dark:text-gray-200 hover:text-[#ff5f1f] transition-all font-bold text-xs">
+                            <BookOpen size={14} className="text-[#ff5f1f]" />
+                            <span>AI Knowledge Hub</span>
+                          </Link>
+                        </div>
+
+                        {/* Dark Card */}
+                        <div className="mt-8 p-4 rounded-xl bg-black dark:bg-white/5 border border-white/10 flex flex-col justify-between h-32">
+                          <p className="text-[11px] text-gray-300 dark:text-gray-400 font-sans leading-relaxed">
+                            See what's possible when AI empowers your enterprise.
+                          </p>
+                          <button
+                            onClick={() => triggerAuthModal('signup')}
+                            className="w-full py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-[10px] font-bold transition-all"
+                          >
+                            Let's Discuss AI
+                          </button>
+                        </div>
+                      </div>
+
+                      {/* Middle Column (col-span-5) */}
+                      <div className="col-span-5 border-r border-gray-200 dark:border-white/10 pr-6">
+                        <h4 className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-4 flex items-center gap-1.5">
                           <Cpu size={12} className="text-[#ff5f1f]" />
-                          <span>Core AI Suite</span>
+                          <span>AI Services & Solutions</span>
                         </h4>
-                        <div className="space-y-4">
-                          <Link href="#services" className="group block">
-                            <h5 className="font-semibold text-gray-900 dark:text-white group-hover:text-[#ff5f1f] transition-colors">NeuralFlow Engine</h5>
-                            <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">High-speed large language model orchestration.</p>
+                        
+                        <div className="grid grid-cols-1 gap-2 text-xs font-semibold text-gray-700 dark:text-gray-300">
+                          <Link href="#services" className="flex items-center gap-2.5 p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-white/5 hover:text-[#ff5f1f] transition-all">
+                            <Cpu size={14} className="text-purple-500" />
+                            <span>AI Development</span>
                           </Link>
-                          <Link href="#services" className="group block">
-                            <h5 className="font-semibold text-gray-900 dark:text-white group-hover:text-[#ff5f1f] transition-colors">CognitiveEngine</h5>
-                            <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">Advanced decision frameworks and task auto-agents.</p>
+                          <Link href="#services" className="flex items-center gap-2.5 p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-white/5 hover:text-[#ff5f1f] transition-all">
+                            <Users size={14} className="text-blue-500" />
+                            <span>AI Consulting</span>
+                          </Link>
+                          <Link href="#services" className="flex items-center gap-2.5 p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-white/5 hover:text-[#ff5f1f] transition-all">
+                            <MessageSquare size={14} className="text-green-500" />
+                            <span>AI Chatbot Development</span>
+                          </Link>
+                          <Link href="#services" className="flex items-center gap-2.5 p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-white/5 hover:text-[#ff5f1f] transition-all">
+                            <Sparkles size={14} className="text-[#ff5f1f]" />
+                            <span>Generative AI Development</span>
+                          </Link>
+                          <Link href="#services" className="flex items-center gap-2.5 p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-white/5 hover:text-[#ff5f1f] transition-all">
+                            <Lightbulb size={14} className="text-yellow-500" />
+                            <span>Generative AI Consulting</span>
+                          </Link>
+                          <Link href="#services" className="flex items-center gap-2.5 p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-white/5 hover:text-[#ff5f1f] transition-all">
+                            <Bot size={14} className="text-pink-500" />
+                            <span>AI Agent Development</span>
+                          </Link>
+                          <Link href="#services" className="flex items-center justify-between p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-white/5 hover:text-[#ff5f1f] transition-all">
+                            <div className="flex items-center gap-2.5">
+                              <Network size={14} className="text-cyan-500" />
+                              <span>AI Integration</span>
+                            </div>
+                            {/* Connect symbol (plug icon/link) */}
+                            <span className="flex items-center gap-1 text-[9px] font-bold bg-[#ff5f1f]/10 text-[#ff5f1f] px-2 py-0.5 rounded-full uppercase tracking-wider">
+                              <Plug size={9} />
+                              <span>Connect</span>
+                            </span>
                           </Link>
                         </div>
                       </div>
-                      <div>
-                        <h4 className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-4 flex items-center gap-1">
-                          <Database size={12} className="text-purple-500" />
-                          <span>Data & Middleware</span>
-                        </h4>
-                        <div className="space-y-4">
-                          <Link href="#saas" className="group block">
-                            <h5 className="font-semibold text-gray-900 dark:text-white group-hover:text-purple-500 transition-colors">AnalyticsIQ Panel</h5>
-                            <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">Real-time enterprise metrics & predictions dashboard.</p>
-                          </Link>
-                          <Link href="#saas" className="group block">
-                            <h5 className="font-semibold text-gray-900 dark:text-white group-hover:text-purple-500 transition-colors">DevLink Gateway</h5>
-                            <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">Developer APIs and secure system connectivity.</p>
-                          </Link>
+
+                      {/* Right Column (col-span-4) */}
+                      <div className="col-span-4 flex flex-col h-full justify-between">
+                        <div>
+                          <h4 className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-4">
+                            Featured Insight
+                          </h4>
+                          
+                          {/* Image box/Mock graphics */}
+                          <div className="relative overflow-hidden rounded-xl bg-slate-900 border border-white/10 aspect-video flex flex-col justify-end p-4 group cursor-pointer shadow-md">
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-10" />
+                            <div className="absolute inset-0 bg-gradient-to-br from-[#ff5f1f]/20 via-transparent to-purple-600/20 z-0" />
+                            
+                            {/* Badge/Crown trophy symbol */}
+                            <div className="absolute top-3 left-3 bg-[#ff5f1f] text-white p-1.5 rounded-lg z-20 flex items-center justify-center">
+                              <Sparkles size={14} />
+                            </div>
+
+                            <div className="relative z-20">
+                              <span className="text-[9px] font-bold uppercase tracking-widest text-[#ff5f1f] bg-[#ff5f1f]/10 px-2 py-0.5 rounded-full">Award Winner</span>
+                              <h5 className="font-bold text-xs text-white mt-1.5 group-hover:text-[#ff5f1f] transition-colors leading-snug">
+                                Leader in AI-First Product Engineering
+                              </h5>
+                            </div>
+                          </div>
                         </div>
+
+                        <Link href="#projects" className="flex items-center gap-1.5 text-xs font-bold text-blue-600 dark:text-blue-400 hover:text-[#ff5f1f] transition-colors mt-4 self-start">
+                          <span>Read Full Article</span>
+                          <ArrowRight size={12} />
+                        </Link>
                       </div>
+
                     </motion.div>
                   )}
                 </AnimatePresence>
@@ -387,21 +461,27 @@ export default function Navbar() {
             >
               <div className="px-4 py-6 space-y-4 text-left font-semibold text-[15px]">
                 
-                {/* Mobile Platforms Accordion */}
+                {/* Mobile Services Accordion */}
                 <div className="border-b border-gray-200/50 dark:border-white/10 pb-2">
                   <button 
                     onClick={() => toggleMobileAccordion('platforms')}
                     className="flex justify-between items-center w-full py-2 text-gray-800 dark:text-gray-200"
                   >
-                    <span>AI Platforms</span>
+                    <span>Services</span>
                     <ChevronDown size={16} className={`transform transition-transform ${mobileAccordions.platforms ? 'rotate-180' : ''}`} />
                   </button>
                   {mobileAccordions.platforms && (
                     <div className="pl-4 mt-2 space-y-2.5 text-sm font-medium text-gray-500 dark:text-gray-400">
-                      <Link href="#services" onClick={() => setIsOpen(false)} className="block py-1">NeuralFlow Engine</Link>
-                      <Link href="#services" onClick={() => setIsOpen(false)} className="block py-1">CognitiveEngine</Link>
-                      <Link href="#saas" onClick={() => setIsOpen(false)} className="block py-1">AnalyticsIQ Panel</Link>
-                      <Link href="#saas" onClick={() => setIsOpen(false)} className="block py-1">DevLink Gateway</Link>
+                      <Link href="#services" onClick={() => setIsOpen(false)} className="block py-1">AI Development</Link>
+                      <Link href="#services" onClick={() => setIsOpen(false)} className="block py-1">AI Consulting</Link>
+                      <Link href="#services" onClick={() => setIsOpen(false)} className="block py-1">AI Chatbot Development</Link>
+                      <Link href="#services" onClick={() => setIsOpen(false)} className="block py-1">Generative AI Development</Link>
+                      <Link href="#services" onClick={() => setIsOpen(false)} className="block py-1">Generative AI Consulting</Link>
+                      <Link href="#services" onClick={() => setIsOpen(false)} className="block py-1">AI Agent Development</Link>
+                      <Link href="#services" onClick={() => setIsOpen(false)} className="flex items-center gap-1.5 py-1">
+                        <span>AI Integration</span>
+                        <span className="text-[8px] font-bold bg-[#ff5f1f]/10 text-[#ff5f1f] px-1.5 py-0.5 rounded-full uppercase tracking-wider">Connect</span>
+                      </Link>
                     </div>
                   )}
                 </div>

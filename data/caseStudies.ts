@@ -24,56 +24,56 @@ export interface CaseStudy {
 export const caseStudies: CaseStudy[] = [
   {
     id: 'cs-1',
-    industry: 'FinTech',
-    projectName: 'Global Payment Gateway AI Optimization',
-    challenge: 'High transaction failure rates and increasing fraud incidents due to legacy rule-based detection systems.',
-    solution: 'Implemented a real-time AI fraud detection system using deep learning and continuous behavioral modeling.',
-    technologies: ['Python', 'TensorFlow', 'AWS SageMaker', 'Redis', 'Kafka'],
+    industry: 'EdTech & AI',
+    projectName: 'Gurushala AI-Powered Question Generator',
+    challenge: 'Educators faced heavy workloads tagging, categorizing, and generating questions from voluminous digital documents manually.',
+    solution: 'Designed an automated AI workflow processing documents and videos using NLP and OCR, automatically generating taxonomy-aligned questions via advanced LLMs.',
+    technologies: ['Next.js', 'Python', 'Tesseract OCR', 'LangChain', 'OpenAI GPT-4'],
     keyOutcomes: [
-      'Significantly reduced false positives',
-      'Automated 95% of manual review workflows',
-      'Improved transaction approval latency'
+      'Reduced question creation cycle times by 10x',
+      'Consistent alignment with complex educational taxonomies',
+      'Lowered manual reviews and workloads for teaching squads'
     ],
     metrics: {
-      revenueGrowth: { label: 'Revenue Retained', value: '14.2', prefix: '$', suffix: 'M' },
-      costReduction: { label: 'Fraud Losses', value: '87', suffix: '%' },
-      efficiencyImprovement: { label: 'Processing Speed', value: '300', suffix: '%' },
+      efficiencyImprovement: { label: 'Creation Cycles', value: '10', suffix: 'x' },
+      costReduction: { label: 'Manual Workload', value: '85', suffix: '%' },
+      userGrowth: { label: 'Active Educators', value: '25', suffix: 'k+' },
     }
   },
   {
     id: 'cs-2',
-    industry: 'Healthcare',
-    projectName: 'Predictive Patient Analytics Platform',
-    challenge: 'Inefficient resource allocation in hospitals leading to overcrowded ERs and prolonged patient wait times.',
-    solution: 'Developed a predictive analytics engine that forecasts patient inflow and optimizes staff scheduling dynamically.',
-    technologies: ['Next.js', 'Node.js', 'PostgreSQL', 'GCP', 'Scikit-learn'],
+    industry: 'Logistics & FoodTech',
+    projectName: 'Americana Restaurant Logistics Intelligence Platform',
+    challenge: 'Fragmented delivery operations across 2,100+ restaurants in 12 countries, causing driver dispatch delays and reporting lag.',
+    solution: 'Unified operations into a real-time intelligence data system with automated order assignment, smart routing, and geofencing.',
+    technologies: ['React', 'Go', 'AWS Cloud', 'Docker', 'Redis', 'Apache Kafka'],
     keyOutcomes: [
-      'Optimized emergency room staff allocation',
-      'Decreased average patient wait times',
-      'Integrated seamlessly with legacy EHRs'
+      'Auto-order assignment increased from 42% to 82%',
+      'Geofencing compliance improved from 20% to 80%',
+      'Report load times reduced by 90% (hours to seconds)'
     ],
     metrics: {
-      efficiencyImprovement: { label: 'Wait Time Reduction', value: '45', suffix: '%' },
-      costReduction: { label: 'Overtime Costs', value: '2.1', prefix: '$', suffix: 'M' },
-      userGrowth: { label: 'Hospitals Onboarded', value: '120', suffix: '+' },
+      efficiencyImprovement: { label: 'Auto Assignment', value: '82', suffix: '%' },
+      userGrowth: { label: 'Orders Processed', value: '60.4', suffix: 'M' },
+      costReduction: { label: 'Report Latency', value: '90', suffix: '%' },
     }
   },
   {
     id: 'cs-3',
-    industry: 'E-Commerce',
-    projectName: 'Conversational AI Shopping Assistant',
-    challenge: 'Low conversion rates and high customer service overhead during peak holiday shopping seasons.',
-    solution: 'Deployed an LLM-powered virtual assistant with RAG integration for highly personalized product recommendations.',
-    technologies: ['React', 'TypeScript', 'LangChain', 'OpenAI', 'Pinecone'],
+    industry: 'TravelTech & Agents',
+    projectName: 'Tootle Intelligent Travel Assistant',
+    challenge: 'High friction searching, comparing, and booking travel recommendations across fragmented search directories.',
+    solution: 'Developed a voice and text AI agent pulling live data from multiple global flight and hotel APIs, summarizing results instantly.',
+    technologies: ['React', 'Python', 'LlamaIndex', 'Pinecone Vector DB', 'WebSockets'],
     keyOutcomes: [
-      'Delivered 24/7 intelligent customer support',
-      'Increased average order value (AOV) significantly',
-      'Deflected routine queries from human agents'
+      'Seamless multi-channel voice and text conversational booking',
+      '10x faster access to personalized travel insights',
+      'Integrated with legacy airline booking engines'
     ],
     metrics: {
-      revenueGrowth: { label: 'Sales Increase', value: '28', suffix: '%' },
-      efficiencyImprovement: { label: 'Support Deflection', value: '65', suffix: '%' },
-      userGrowth: { label: 'Engagement Rate', value: '3.5', suffix: 'x' },
+      userGrowth: { label: 'User Engagement', value: '35', suffix: '%' },
+      efficiencyImprovement: { label: 'Insight Access', value: '10', suffix: 'x' },
+      revenueGrowth: { label: 'Booking Conversion', value: '28', suffix: '%' },
     }
   }
 ];
