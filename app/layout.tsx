@@ -10,7 +10,6 @@ import AuthModal from '@/components/AuthModal'
 import CookieConsent from '@/components/CookieConsent'
 import LiveChatWidget from '@/components/LiveChatWidget'
 import AIAssistantDrawer from '@/components/AIAssistantDrawer'
-import GlobalLaptopFrame from '@/components/GlobalLaptopFrame'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -59,18 +58,25 @@ export default function RootLayout({
         className="overflow-x-hidden font-sans antialiased"
       >
         <ThemeProvider>
-          <GlobalLaptopFrame>
-            <SmoothScroll>
-              <ParticleBackground />
-              <Navbar />
-              <AuthModal />
-              {children}
-              <Footer />
-              <CookieConsent />
-              <LiveChatWidget />
-              <AIAssistantDrawer />
-            </SmoothScroll>
-          </GlobalLaptopFrame>
+          {/* Fullscreen Animated Iframe Background */}
+          <div className="fixed inset-0 -z-50 pointer-events-none">
+            <iframe 
+              src="/animated-bg.html" 
+              className="w-full h-full border-none opacity-40 dark:opacity-60"
+              title="Animated Background"
+            />
+          </div>
+
+          <SmoothScroll>
+            <ParticleBackground />
+            <Navbar />
+            <AuthModal />
+            {children}
+            <Footer />
+            <CookieConsent />
+            <LiveChatWidget />
+            <AIAssistantDrawer />
+          </SmoothScroll>
         </ThemeProvider>
       </body>
     </html>
