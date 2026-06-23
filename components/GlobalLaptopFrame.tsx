@@ -15,12 +15,21 @@ export default function GlobalLaptopFrame({ children }: { children: React.ReactN
   return (
     <div className="min-h-screen bg-[#0f1115] dark:bg-[#050505] flex items-center justify-center p-2 sm:p-6 md:p-10 relative overflow-hidden perspective-[2000px]">
       
+      {/* Fullscreen Animated Iframe Background */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <iframe 
+          src="/animated-bg.html" 
+          className="w-full h-full border-none opacity-60"
+          title="Animated Background"
+        />
+      </div>
+      
       {/* Dynamic ambient spotlight behind the laptop */}
       <motion.div 
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 2, delay: 0.5 }}
-        className="absolute inset-0 flex items-center justify-center pointer-events-none"
+        className="absolute inset-0 flex items-center justify-center pointer-events-none z-0"
       >
         <div className="w-[80vw] h-[80vh] bg-gradient-to-tr from-blue-600/20 via-purple-600/10 to-orange-500/20 blur-[120px] rounded-full" />
       </motion.div>
