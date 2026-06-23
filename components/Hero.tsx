@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 import { ArrowRight, Sparkles, Calendar } from 'lucide-react'
-import FloatingCube from './3d/FloatingCube'
+import LaptopFrame from './LaptopFrame'
 import { useTheme } from '@/components/ThemeProvider'
 
 const words = [
@@ -229,15 +229,15 @@ export default function Hero() {
           </div>
         </motion.div>
 
-        {/* Floating Cube Visual */}
+        {/* Laptop Visual */}
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1 }}
-          className="hidden md:block md:col-span-5 h-[500px] relative"
+          className="hidden md:flex md:col-span-5 h-full relative items-center justify-center"
         >
           <div className="absolute inset-0 bg-gradient-to-tr from-[#ff5f1f]/10 to-purple-600/10 rounded-full blur-[60px] -z-10" />
-          <FloatingCube />
+          <LaptopFrame />
         </motion.div>
 
       </div>
