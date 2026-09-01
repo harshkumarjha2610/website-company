@@ -154,13 +154,13 @@ export default function Navbar() {
                         {/* Dark Card */}
                         <div className="mt-8 p-4 rounded-xl bg-black dark:bg-white/5 border border-white/10 flex flex-col justify-between h-32">
                           <p className="text-[11px] text-gray-300 dark:text-gray-400 font-sans leading-relaxed">
-                            See what's possible when AI empowers your enterprise.
+                            See what&apos;s possible when AI empowers your enterprise.
                           </p>
                           <button
                             onClick={() => triggerAuthModal('signup')}
                             className="w-full py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-[10px] font-bold transition-all"
                           >
-                            Let's Discuss AI
+                            Let&apos;s Discuss AI
                           </button>
                         </div>
                       </div>

@@ -1,144 +1,204 @@
-'use client'
 
-import { motion } from 'framer-motion'
-import { BrainCircuit, Bot, Cog, Database, Network, MessageSquare, Eye, LineChart, ArrowRight } from 'lucide-react'
+"use client";
 
-const aiServices = [
-  { title: 'Generative AI', description: 'Create novel content, code, and designs autonomously with fine-tuned foundation models.', icon: <BrainCircuit className="w-8 h-8 text-cyan-400" />, gradient: 'from-cyan-500/20 to-blue-500/20', iconColor: '#22d3ee' },
-  { title: 'AI Agents', description: 'Deploy autonomous agents that reason, plan, and execute complex multi-step enterprise workflows.', icon: <Bot className="w-8 h-8 text-violet-400" />, gradient: 'from-violet-500/20 to-fuchsia-500/20', iconColor: '#a78bfa' },
-  { title: 'Enterprise Automation', description: 'Streamline legacy processes with intelligent RPA and cognitive automation pipelines.', icon: <Cog className="w-8 h-8 text-blue-400" />, gradient: 'from-blue-500/20 to-indigo-500/20', iconColor: '#60a5fa' },
-  { title: 'Retrieval-Augmented Gen', description: 'Ground LLM responses in your proprietary enterprise data for hallucination-free insights.', icon: <Database className="w-8 h-8 text-emerald-400" />, gradient: 'from-emerald-500/20 to-cyan-500/20', iconColor: '#34d399' },
-  { title: 'LLM Integration', description: 'Seamlessly embed state-of-the-art language models into your existing applications and products.', icon: <Network className="w-8 h-8 text-purple-400" />, gradient: 'from-purple-500/20 to-violet-500/20', iconColor: '#c084fc' },
-  { title: 'AI Chatbots', description: 'Deliver 24/7 intelligent customer and employee support with context-aware conversational AI.', icon: <MessageSquare className="w-8 h-8 text-pink-400" />, gradient: 'from-pink-500/20 to-rose-500/20', iconColor: '#f472b6' },
-  { title: 'Computer Vision', description: 'Extract actionable intelligence from images and video for quality control and security.', icon: <Eye className="w-8 h-8 text-sky-400" />, gradient: 'from-sky-500/20 to-blue-500/20', iconColor: '#38bdf8' },
-  { title: 'Predictive Analytics', description: 'Forecast trends, detect anomalies, and optimize supply chains with advanced machine learning.', icon: <LineChart className="w-8 h-8 text-indigo-400" />, gradient: 'from-indigo-500/20 to-purple-500/20', iconColor: '#818cf8' },
-]
+import React from "react";
+import { Carousel, Card } from "@/components/ui/apple-cards-carousel";
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { staggerChildren: 0.1 } },
-}
-const cardVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' } },
-}
+export function AIInnovationHub() {
+  const cards = data.map((card, index) => (
+    <Card key={card.title} card={card} index={index} />
+  ));
 
-export default function AIInnovationHub() {
   return (
-    <section
-      id="ai-hub"
-      className="py-24 relative overflow-hidden"
-      style={{
-        backgroundColor: 'var(--bg-base)',
-        borderTop: '1px solid var(--border)',
-        borderBottom: '1px solid var(--border)',
-      }}
-    >
-      {/* Ambient glows */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-40 -right-40 w-96 h-96 bg-violet-600 rounded-full blur-[120px]" style={{ opacity: 'var(--glow-opacity)' }} />
-        <div className="absolute top-1/3 -left-20 w-72 h-72 bg-[#22d3ee] rounded-full blur-[100px]" style={{ opacity: 'var(--glow-opacity)' }} />
-        <div className="absolute -bottom-20 right-1/3 w-80 h-80 bg-blue-600 rounded-full blur-[120px]" style={{ opacity: 'var(--glow-opacity)' }} />
+    <section className="w-full py-20">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <h2 className="text-3xl font-bold text-neutral-800 dark:text-neutral-200 md:text-5xl">
+          AI & Innovation <span className="rounded-lg border border-blue-700 bg-blue-600 px-2 py-1 text-white">Hub</span>
+        </h2>
+
+        <p className="mt-4 text-base text-neutral-600 dark:text-neutral-400 md:text-lg">
+          Intelligent solutions designed to transform enterprise operations,
+          accelerate innovation, and unlock new possibilities.
+        </p>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-20"
-        >
-          <div
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6"
-            style={{
-              backgroundColor: 'var(--badge-bg)',
-              border: '1px solid var(--badge-border)',
-            }}
-          >
-            <span className="w-2 h-2 rounded-full bg-violet-400 animate-pulse" />
-            <span className="text-sm font-medium font-sans tracking-wide uppercase" style={{ color: 'var(--text-secondary)' }}>AI & Innovation</span>
-          </div>
-          <h2 className="text-4xl md:text-6xl font-display font-extrabold mb-6 tracking-tight" style={{ color: 'var(--text-heading)' }}>
-            Intelligence <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#22d3ee] via-blue-500 to-violet-500">Unleashed</span>
-          </h2>
-          <p className="text-lg md:text-xl max-w-3xl mx-auto font-sans leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
-            Transform your enterprise with state-of-the-art artificial intelligence. We build custom AI solutions that drive exponential growth and operational dominance.
-          </p>
-        </motion.div>
-
-        {/* Grid */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-100px' }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16"
-        >
-          {aiServices.map((service, index) => (
-            <motion.div key={index} variants={cardVariants} className="group relative">
-              <div
-                className="h-full rounded-3xl p-8 relative overflow-hidden transition-smooth hover:-translate-y-2"
-                style={{
-                  backgroundColor: 'var(--bg-card)',
-                  border: '1px solid var(--border)',
-                  boxShadow: 'var(--shadow-card)',
-                }}
-                onMouseEnter={e => {
-                  (e.currentTarget as HTMLElement).style.borderColor = service.iconColor + '40'
-                  ;(e.currentTarget as HTMLElement).style.boxShadow = `var(--shadow-card-hover), 0 0 20px ${service.iconColor}15`
-                }}
-                onMouseLeave={e => {
-                  (e.currentTarget as HTMLElement).style.borderColor = 'var(--border)'
-                  ;(e.currentTarget as HTMLElement).style.boxShadow = 'var(--shadow-card)'
-                }}
-              >
-                {/* Internal gradient on hover */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
-
-                <div
-                  className="mb-6 relative z-10 p-3 rounded-2xl inline-block group-hover:scale-110 transition-smooth"
-                  style={{
-                    backgroundColor: service.iconColor + '12',
-                    border: `1px solid ${service.iconColor}25`,
-                  }}
-                >
-                  {service.icon}
-                </div>
-
-                <h3 className="text-xl font-display font-bold mb-3 tracking-tight relative z-10" style={{ color: 'var(--text-heading)' }}>
-                  {service.title}
-                </h3>
-                <p className="font-sans text-sm leading-relaxed relative z-10" style={{ color: 'var(--text-secondary)' }}>
-                  {service.description}
-                </p>
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
-
-        {/* CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="flex justify-center"
-        >
-          <a
-            href="#contact"
-            className="group relative inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-[#22d3ee] to-violet-600 text-white font-bold rounded-full overflow-hidden transition-all hover:scale-105 active:scale-95"
-            style={{ boxShadow: '0 0 40px rgba(34,211,238,0.2)' }}
-          >
-            <div className="absolute inset-0 bg-gradient-to-r from-cyan-300 via-blue-300 to-violet-300 opacity-0 group-hover:opacity-20 transition-opacity duration-500" />
-            <span className="relative z-10 flex items-center gap-2">
-              Explore AI Solutions
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </span>
-          </a>
-        </motion.div>
+      <div className="mx-auto max-w-7xl">
+        <Carousel items={cards} />
       </div>
     </section>
-  )
+  );
 }
+
+/* -------------------------------------------------------------------------- */
+/* Card Content                                                               */
+/* -------------------------------------------------------------------------- */
+
+const CardContent = ({
+  category,
+  description,
+}: {
+  category: string;
+  description: string;
+}) => {
+  return (
+    <div className="rounded-3xl bg-neutral-100 p-8 dark:bg-neutral-800 md:p-14">
+      <p className="mb-3 text-sm font-semibold uppercase tracking-wider text-neutral-500 dark:text-neutral-400">
+        {category}
+      </p>
+
+      <p className="max-w-3xl text-base leading-relaxed text-neutral-600 dark:text-neutral-300 md:text-2xl">
+        {description}
+      </p>
+    </div>
+  );
+};
+
+/* -------------------------------------------------------------------------- */
+/* AI Solutions                                                               */
+/* -------------------------------------------------------------------------- */
+
+const data = [
+  {
+    category: "Generative AI",
+
+    title: "Create novel content, code, and designs.",
+
+    // description:
+    //   "Create novel content, code, and designs autonomously with fine-tuned foundation models.",
+
+    src: "https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=1600&auto=format&fit=crop",
+
+    content: (
+      <CardContent
+        category="Generative AI"
+        description="Create novel content, code, and designs autonomously with fine-tuned foundation models."
+      />
+    ),
+  },
+
+  {
+    category: "AI Agents",
+
+    title: "Autonomous intelligence for enterprise.",
+
+    // description:
+    //   "Deploy autonomous agents that reason, plan, and execute complex multi-step enterprise workflows.",
+
+    src: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=1600&auto=format&fit=crop",
+
+    content: (
+      <CardContent
+        category="AI Agents"
+        description="Deploy autonomous agents that reason, plan, and execute complex multi-step enterprise workflows."
+      />
+    ),
+  },
+
+  {
+    category: "Enterprise Automation",
+
+    title: "Automate complex business processes.",
+
+    // description:
+    //   "Streamline legacy processes with intelligent RPA and cognitive automation pipelines.",
+
+    src: "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1600&auto=format&fit=crop",
+
+    content: (
+      <CardContent
+        category="Enterprise Automation"
+        description="Streamline legacy processes with intelligent RPA and cognitive automation pipelines."
+      />
+    ),
+  },
+
+  {
+    category: "Retrieval-Augmented Gen",
+
+    title: "Ground AI in your enterprise data.",
+
+    // description:
+    //   "Ground LLM responses in your proprietary enterprise data for hallucination-free insights.",
+
+    src: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=1600&auto=format&fit=crop",
+
+    content: (
+      <CardContent
+        category="Retrieval-Augmented Gen"
+        description="Ground LLM responses in your proprietary enterprise data for hallucination-free insights."
+      />
+    ),
+  },
+
+  {
+    category: "LLM Integration",
+
+    title: "Embed intelligence into your products.",
+
+    description:
+      "Seamlessly embed state-of-the-art language models into your existing applications and products.",
+
+    src: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1600&auto=format&fit=crop",
+
+    content: (
+      <CardContent
+        category="LLM Integration"
+        description="Seamlessly embed state-of-the-art language models into your existing applications and products."
+      />
+    ),
+  },
+
+  {
+    category: "AI Chatbots",
+
+    title: "Conversational AI that understands.",
+
+    // description:
+    //   "Deliver 24/7 intelligent customer and employee support with context-aware conversational AI.",
+
+    src: "https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=1600&auto=format&fit=crop",
+
+    content: (
+      <CardContent
+        category="AI Chatbots"
+        description="Deliver 24/7 intelligent customer and employee support with context-aware conversational AI."
+      />
+    ),
+  },
+
+  {
+    category: "Computer Vision",
+
+    title: "Turn visual data into intelligence.",
+
+    // description:
+    //   "Extract actionable intelligence from images and video for quality control and security.",
+
+    src: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1600&auto=format&fit=crop",
+
+    content: (
+      <CardContent
+        category="Computer Vision"
+        description="Extract actionable intelligence from images and video for quality control and security."
+      />
+    ),
+  },
+
+  {
+    category: "Predictive Analytics",
+
+    title: "Predict trends before they happen.",
+
+    // description:
+    //   "Forecast trends, detect anomalies, and optimize supply chains with advanced machine learning.",
+
+    src: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1600&auto=format&fit=crop",
+
+    content: (
+      <CardContent
+        category="Predictive Analytics"
+        description="Forecast trends, detect anomalies, and optimize supply chains with advanced machine learning."
+      />
+    ),
+  },
+];
