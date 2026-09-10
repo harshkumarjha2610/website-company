@@ -60,137 +60,119 @@ export const useCarousel = () => {
 
 export const Carousel = ({
   items,
+  initialScroll = 0,
 }: CarouselProps) => {
   const carouselRef = useRef<HTMLDivElement>(null);
-  const sectionRef = useRef<HTMLDivElement>(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(true);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
-  const [isVisible, setIsVisible] = useState(false);
-  const [isPaused, setIsPaused] = useState(false);
-
-  // Start animation when carousel enters the screen
   useEffect(() => {
-    const element = sectionRef.current;
+    if (carouselRef.current) {
+      carouselRef.current.scrollLeft = initialScroll;
+      checkScrollability();
+    }
+  }, [initialScroll]);
 
-    if (!element) return;
+  const checkScrollability = () => {
+    if (carouselRef.current) {
+      const { scrollLeft, scrollWidth, clientWidth } = carouselRef.current;
+      setCanScrollLeft(scrollLeft > 0);
+      setCanScrollRight(scrollLeft < scrollWidth - clientWidth);
+    }
+  };
 
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setIsVisible(entry.isIntersecting);
-      },
-      {
-        threshold: 0.1,
-      }
-    );
+  const scrollLeft = () => {
+    if (carouselRef.current) {
+      carouselRef.current.scrollBy({ left: -300, behavior: "smooth" });
+    }
+  };
 
-    observer.observe(element);
+  const scrollRight = () => {
+    if (carouselRef.current) {
+      carouselRef.current.scrollBy({ left: 300, behavior: "smooth" });
+    }
+  };
 
-    return () => {
-      observer.disconnect();
-    };
-  }, []);
+  const handleCardClose = (index: number) => {
+    if (carouselRef.current) {
+      const cardWidth = isMobile() ? 230 : 384;
+      const gap = isMobile() ? 4 : 8;
+      const scrollPosition = (cardWidth + gap) * (index + 1);
+      carouselRef.current.scrollTo({
+        left: scrollPosition,
+        behavior: "smooth",
+      });
+      setCurrentIndex(index);
+    }
+  };
 
-  // Infinite scrolling animation
-  useEffect(() => {
-    const carousel = carouselRef.current;
-
-    if (!carousel || !isVisible) return;
-
-    let animationFrame: number;
-    let lastTime = performance.now();
-
-    // Change this number to control speed
-    const speed = 0.06;
-
-    const animate = (time: number) => {
-      const delta = time - lastTime;
-
-      lastTime = time;
-
-      if (!isPaused) {
-        carousel.scrollLeft += delta * speed;
-
-        // Width of one complete set of cards
-        const firstSet = carousel.querySelector(
-  "[data-carousel-set='first']"
-) as HTMLElement | null;
-
-if (firstSet) {
-  const firstSetWidth = firstSet.offsetWidth;
-
-  if (carousel.scrollLeft >= firstSetWidth) {
-    carousel.scrollLeft -= firstSetWidth;
-  }
-}
-      }
-
-      animationFrame = requestAnimationFrame(animate);
-    };
-
-    animationFrame = requestAnimationFrame(animate);
-
-    return () => {
-      cancelAnimationFrame(animationFrame);
-    };
-  }, [isVisible, isPaused]);
+  const isMobile = () => {
+    return window && window.innerWidth < 768;
+  };
 
   return (
-    <div
-      ref={sectionRef}
-      className="relative w-full overflow-hidden"
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
+    <CarouselContext.Provider
+      value={{ onCardClose: handleCardClose, currentIndex }}
     >
-      <div
-        ref={carouselRef}
-        className="
-          flex
-          w-full
-          overflow-x-hidden
-          py-10
-          [scrollbar-width:none]
-          [-ms-overflow-style:none]
-          [&::-webkit-scrollbar]:hidden
-        "
-      >
-        {/* FIRST SET OF CARDS */}
-        <div data-carousel-set="first" className="flex shrink-0 gap-6 px-3">
-          {items.map((item, index) => (
-            <div
-              key={`first-${index}`}
-              className="shrink-0"
-            >
-              {item}
-            </div>
-          ))}
+      <div className="relative w-full">
+        <div
+          className="flex w-full overflow-x-scroll overscroll-x-auto scroll-smooth py-10 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+          ref={carouselRef}
+          onScroll={checkScrollability}
+        >
+          <div className="flex flex-row justify-start gap-4 pl-4 max-w-7xl mx-auto">
+            {items.map((item, index) => (
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0, transition: { duration: 0.5, delay: 0.2 * index, ease: "easeOut" } }}
+                key={`card-${index}`}
+                className="last:pr-[5%] md:last:pr-[33%] rounded-3xl"
+              >
+                {item}
+              </motion.div>
+            ))}
+          </div>
         </div>
 
-        {/* SECOND SET OF CARDS */}
-        <div
-          className="flex shrink-0 gap-6 px-3"
-          aria-hidden="true"
-        >
-          {items.map((item, index) => (
-            <div
-              key={`second-${index}`}
-              className="shrink-0"
-            >
-              {item}
-            </div>
-          ))}
+        {/* Left Arrow */}
+        <div className="flex justify-end gap-2 mr-10 mt-4">
+          <button
+            className="relative z-40 h-10 w-10 rounded-full bg-gray-100 dark:bg-neutral-800 flex items-center justify-center disabled:opacity-50"
+            onClick={scrollLeft}
+            disabled={!canScrollLeft}
+            aria-label="Scroll left"
+          >
+            <IconArrowNarrowLeft className="h-6 w-6 text-gray-500 dark:text-neutral-400" />
+          </button>
+          <button
+            className="relative z-40 h-10 w-10 rounded-full bg-gray-100 dark:bg-neutral-800 flex items-center justify-center disabled:opacity-50"
+            onClick={scrollRight}
+            disabled={!canScrollRight}
+            aria-label="Scroll right"
+          >
+            <IconArrowNarrowRight className="h-6 w-6 text-gray-500 dark:text-neutral-400" />
+          </button>
         </div>
       </div>
-    </div>
+    </CarouselContext.Provider>
   );
 };
 
 export const Card = ({ card, index }: CardProps) => {
   const [open, setOpen] = useState(false);
+  const { onCardClose } = useCarousel();
 
   const containerRef = useRef<HTMLDivElement>(null);
 
   useOutsideClick(containerRef, () => {
-    setOpen(false);
+    handleClose();
   });
+
+  const handleClose = () => {
+    setOpen(false);
+    onCardClose(index);
+  };
 
   useEffect(() => {
     if (!open) {
@@ -400,7 +382,7 @@ export const Card = ({ card, index }: CardProps) => {
             >
               {/* Close */}
               <button
-                onClick={() => setOpen(false)}
+                onClick={handleClose}
                 className="
                   absolute
                   right-5
