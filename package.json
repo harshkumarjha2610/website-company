@@ -9,6 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@react-three/drei": "^9.121.5",
+    "@react-three/fiber": "^8.17.14",
     "@tabler/icons-react": "^3.46.0",
     "clsx": "^2.0.0",
     "framer-motion": "^10.16.0",
