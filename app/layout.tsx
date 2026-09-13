@@ -10,6 +10,7 @@ import AuthModal from '@/components/AuthModal'
 import CookieConsent from '@/components/CookieConsent'
 import LiveChatWidget from '@/components/LiveChatWidget'
 import AIAssistantDrawer from '@/components/AIAssistantDrawer'
+import { AdminPanel } from '@/components/AdminSidebar'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -76,6 +77,7 @@ export default function RootLayout({
             <CookieConsent />
             <LiveChatWidget />
             <AIAssistantDrawer />
+            <AdminPanel />
           </SmoothScroll>
         </ThemeProvider>
       </body>
